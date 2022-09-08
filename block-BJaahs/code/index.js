@@ -31,7 +31,6 @@ function getCorrectAnswer(){
   return options[correctAnswerIndex];
 }
 
-
 // Organize using object 
 
 let question = {
