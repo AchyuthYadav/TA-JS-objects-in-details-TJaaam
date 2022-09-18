@@ -1,9 +1,12 @@
 console.log(this.document === document); // Output
 
+true
 // ------------
+
 
 console.log(this === window); //Output
 
+true
 // ------------
 
 var myFunction = function () {
@@ -11,6 +14,7 @@ var myFunction = function () {
 };
 myFunction(); // Output
 
+Window {window: Window, self: Window, document: document, name: '', location: Location, …}
 // ------------
 
 function f1() {
@@ -19,6 +23,7 @@ function f1() {
 }
 console.log(f1() === window); //Output
 
+false
 // ------------
 
 function foo() {
@@ -28,6 +33,7 @@ function foo() {
 
 foo(); //Output ??
 
+true 
 // ------------
 
 // This for IIFE
@@ -36,6 +42,7 @@ foo(); //Output ??
   console.log(this === window);
 })(); //Output
 
+true
 // ------------
 
 var myObject = {};
@@ -44,6 +51,7 @@ myObject.someMethod = function () {
 };
 myObject.someMethod(); //Value Of This
 
+{someMethod: ƒ}
 // ------------
 
 function Person(fn, ln) {
@@ -56,9 +64,9 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // Name: John Reed
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // Name: Paul Adams
 
 // ------------
 
@@ -76,10 +84,10 @@ let user = {
   },
 };
 
-user.foo(); // Output
+user.foo(); // false
 let fun1 = user.foo1;
-fun1(); // Output ??
-user.foo1(); // Output ??
+fun1(); // true
+user.foo1(); // false
 
 // ------------
 
@@ -91,13 +99,14 @@ var obj = {
   },
 };
 
-obj.getX(); // Output ??
+obj.getX(); // 81
 
 var retrieveX = obj.getX;
-retrieveX(); //Output ??
+retrieveX(); 9
 
 var boundGetX = retrieveX.bind(obj);
-boundGetX(); // Output ??
+boundGetX(); // 81
+
 
 // ------------
 
@@ -111,11 +120,12 @@ function Person(fn, ln) {
 }
 
 let person = new Person('John', 'Reed');
-person.displayName(); // Output
+person.displayName(); // John Reed
 let person2 = new Person('Paul', 'Adams');
-person2.displayName(); // Output
+person2.displayName(); // paul adams
 
-person.displayName.call(person2); // Output ??
+person.displayName.call(person2); // paul adams
+
 
 // ------------
 
@@ -192,7 +202,7 @@ console.log(name2.print()); // output?
 let outerFn = function () {
   let n = 5;
   console.log(innerItem);
-  let innerFn = function () {
+  let innerFn = function () {obj.getThis();
     let innerItem = 'inner';
     console.log(n);
   };
@@ -200,6 +210,7 @@ let outerFn = function () {
 };
 
 outerFn()();
+2 4 6
 
 // -----------
 
@@ -238,7 +249,7 @@ function print() {
 }
 
 let printNameBob = print.bind(bobObj);
-console.log(printNameBob()); // output??
+console.log(printNameBob()); // bob
 
 // -------------------
 
@@ -299,4 +310,4 @@ const call = {
 
 let newCall = call.anotherCaller;
 
-newCall(); // output ??
+newCall(); // 
