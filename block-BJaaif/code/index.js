@@ -6,9 +6,10 @@
 
 function makePerson(name, age) {
   // add code here
-  let vicky = {};
-  vicky.name = name;
-  vicky.age = age;
+  let obj = {};
+  obj.name = name;
+  obj.age = age;
+  return obj;
 }
 
 var vicky = makePerson('Vicky', 24);
@@ -25,7 +26,7 @@ var vicky = makePerson('Vicky', 24);
 
 var personStore = {
   // add code here
-  greet:function(){
+  greet(){
     console.log("hello");
   }
 };
@@ -79,9 +80,10 @@ var simon = new PersonConstructor();
 
 function personFromConstructor(name, age) {
   // add code here
-  let mike = {};
-  mike.name = name;
-  mike.age = age;
+  let obj = object.create(personStore);
+  obj.name = name;
+  obj.age = age;
+  return obj;
 }
 
 var mike = personFromConstructor('Mike', 30);
@@ -94,6 +96,17 @@ var mike = personFromConstructor('Mike', 30);
 /*** CHALLENGE 3 of 3 ***/
 // add code here
 
+personStore.introduce = function(){
+  console.log('Hi, my name is ${this.name}')
+};
+
+function  PersonConstructor() {
+  this.greet=function(){
+    console.log ('hello')
+  }
+  
+ }
+
 // mike.introduce(); // -> Logs 'Hi, my name is Mike'
 
 /****************************************************************
@@ -103,20 +116,36 @@ var mike = personFromConstructor('Mike', 30);
 /*** CHALLENGE 1 of 3 ***/
 
 class PersonClass {
-  constructor() {
+  constructor(name) {
     // add code here
+    this.name = name;
+
   }
 
   // add code here
-}
+  greet(){
+    console.log ('hello')
+  }
+
+  }
 
 // /********* Uncomment this line to test your work! *********/
 var george = new PersonClass();
+george.greet();
 // george.greet(); // -> Logs 'hello'
 
 /*** CHALLENGE 2 of 3 ***/
 
 // add code here
+class DeveloperClass extends PersonClass {
+  constructor(name){
+    super(name);
+  }
+  introduce(){
+    console.log('Hello World, my name i${this.name}')
+  }
+}
+
 
 // /********* Uncomment these lines to test your work! *********/
 // var thai = new DeveloperClass('Thai', 32);
@@ -141,13 +170,21 @@ function userFactory(name, score) {
   return user;
 }
 
-var adminFunctionStore /* Put code here */;
+var adminFunctionStore = object.create(userFunctionStore)
 
 function adminFactory(name, score) {
   // Put code here
+  let obj = userFactory(name, scope);
+  object.setPrototypeOf(obj, adminFromFactory);
+  obj.type ="Admin";
+  return obj;
 }
 
 /* Put code here for a method called sharePublicMessage*/
+
+adminFactory.sharePublicMessage = function (){
+  console.log('welcome user');
+};
 
 var adminFromFactory = adminFactory('Eva', 5);
 
