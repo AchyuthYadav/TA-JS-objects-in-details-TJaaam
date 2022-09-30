@@ -6,6 +6,9 @@
 
 function makePerson(name, age) {
   // add code here
+  let vicky = {};
+  vicky.name = name;
+  vicky.age = age;
 }
 
 var vicky = makePerson('Vicky', 24);
@@ -22,6 +25,9 @@ var vicky = makePerson('Vicky', 24);
 
 var personStore = {
   // add code here
+  greet:function(){
+    console.log("hello");
+  }
 };
 
 // /********* Uncomment this line to test your work! *********/
@@ -31,6 +37,12 @@ var personStore = {
 
 function personFromPersonStore(name, age) {
   // add code here
+  let sandra = {};
+  sandra.name = name;
+  sandra.age = age;
+  sandra.greet = function(){
+    console.log("hello")
+  }
 }
 
 var sandra = personFromPersonStore('Sandra', 26);
@@ -54,6 +66,9 @@ var sandra = personFromPersonStore('Sandra', 26);
 
 function PersonConstructor() {
   // add code here
+  greet = function(){
+    console.log("hello");
+  }
 }
 
 // /********* Uncomment this line to test your work! *********/
@@ -64,6 +79,9 @@ var simon = new PersonConstructor();
 
 function personFromConstructor(name, age) {
   // add code here
+  let mike = {};
+  mike.name = name;
+  mike.age = age;
 }
 
 var mike = personFromConstructor('Mike', 30);
