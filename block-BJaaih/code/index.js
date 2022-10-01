@@ -5,10 +5,20 @@
 
 // myMap function goes here
 
+Array.prototype.myMap=function (cb){
+  let final = [];
+  for(let i=0; i<this.length; i++){
+  const element = this[i];
+  final.push(cb (element, i,this))
+}
+return final;
+}
+
+
 // Test the myMap function you created above
 
 let numbers = [1, 5, 6, 8, 9];
-let words = 'quick brown fox jumped over a lazy dog'.split(
+let words = 'quick brown fox jumped over a lazy dog'.split( 
   ' '
 );
 let doubleNum = numbers.myMap(function (num) {
@@ -27,6 +37,16 @@ console.log(capitalWords); // it should be 'Quick Brown Fox Jumped Over A Lazy D
 2. Add a method named `myFilter` to Array.prototype. myFilter should behave similar to Array.filter.
 After adding the function test it using the code below.
 */
+
+Array.prototype.myFilter=function (cb){
+  let final = [];
+  for(let i=0; i<this.length; i++){
+  const element = this[i];
+  final.push(cb (element, i,this))
+}
+return final;
+}
+
 
 // You code goes here
 
@@ -48,6 +68,10 @@ new array and in the new array the index of the elements will be shuffled (rando
 Make sure it does not the changes the original array.
 
 */
+
+Array.prototype.shuffle= function(){
+  return [...this].sort(() => Math.random() - 0.5)
+}
 
 // You code goes here
 
@@ -78,6 +102,15 @@ array that will contain only element that is common in both the array.
 */
 
 // You code goes here
+
+Array.prototype.unique= function(){
+  return this.reduce((acc,cv) => {
+    if(!acc.includes(cv)){
+      acc.push(cv)
+    }
+    return acc
+    },[])
+    }
 
 // Test to check the shuffle method (It will return different output every time you call)
 console.log(num.intersection([2, 7, 11, 32])); // [2, 7]
