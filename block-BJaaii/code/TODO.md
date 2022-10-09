@@ -27,7 +27,40 @@ Getter
 
 - `length`: returns the current length of the stack.
 
+class Stack{
+    constructor(){
+        this.stack =[];
+    }
+
+    push(value){
+        this.stack.push(value);
+        return this.stack; 
+    }
+    
+    pop(value){
+        this.stack.pop();
+        return this.stack; 
+    }
+
+    reverse(){
+        this.stack.revrse();
+        return thi.reverse;
+    }
+     isEmpty(){
+        !(this.stack.length > 0);
+    }
+    displayStack(){
+        this.stack.join("");
+        return this.stack;
+    }
+    get length(){
+        this.stack.length;
+    
+}
+
+
 #### Test
+
 
 ```js
 let myStack = new Stack();
@@ -45,6 +78,9 @@ console.log(myStack.isEmpty()); // false
 myStack.pop();
 console.log(myStack.isEmpty()); // true
 ```
+
+
+
 
 2. Create a class name `Queue` with the following data and methods. Also implement a `length` getter method.
 
